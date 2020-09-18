@@ -9,6 +9,8 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/spf13/viper"
 )
 
 const (
@@ -40,7 +42,14 @@ func Post(url string, data []byte) (response []byte, err error) {
 	}
 	req.Header.Set("Content-Type", "application/json")
 
-	client := &http.Client{}
+	// Set client timeout
+	timeout := viper.GetInt64("HTTP_CLIENT_TIMEOUT")
+	if timeout <= 0 {
+		timeout = 5
+	}
+	client := &http.Client{
+		Timeout: time.Duration(timeout) * time.Second,
+	}
 	rsp, err := client.Do(req)
 	if err != nil {
 		return
@@ -316,4 +325,8 @@ func (u *UmengPush) TagClear(deviceToken string) (result TagResult, err error) {
 		err = errors.New(fmt.Sprintf("error_code=%s;error_msg=%s", result.Data.ErrorCode, result.Data.ErrorMsg))
 	}
 	return
+}
+
+func init() {
+	viper.AutomaticEnv()
 }
