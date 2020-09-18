@@ -1,6 +1,6 @@
 # umeng-push
 
-[![GoDoc](https://godoc.org/github.com/huangfuhui/umeng-push?status.svg)](https://godoc.org/github.com/huangfuhui/umeng-push)
+[![GoDoc](https://godoc.org/github.com/uhhc/umeng-push?status.svg)](https://godoc.org/github.com/uhhc/umeng-push)
 
 <a href="https://developer.umeng.com/docs/66632/detail/68343">友盟推送</a>友盟推送服务端SDK,推送相关接口使用HTTPS协议,用户标签相关接口使用HTTP协议(因为官方的HTTPS接口无法访问)
 
@@ -8,7 +8,7 @@
 
 ##### 下载安装
 ```bash
-$ go get -u github.com/huangfuhui/umeng-push
+$ go get -u github.com/uhhc/umeng-push
 ```
 
 ##### 使用示例
@@ -16,7 +16,7 @@ $ go get -u github.com/huangfuhui/umeng-push
 package main
 
 import (
-	"github.com/huangfuhui/umeng-push"
+	"github.com/uhhc/umeng-push"
 	"log"
 )
 
